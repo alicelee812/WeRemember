@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		37298C7B2921E72E008543BE /* Finance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37298C7A2921E72E008543BE /* Finance.swift */; };
+		3729D99229253B1900B09056 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729D99129253B1900B09056 /* ExpenseTableViewCell.swift */; };
 		379B09B82921D99200FD32B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B09B72921D99200FD32B0 /* AppDelegate.swift */; };
 		379B09BA2921D99200FD32B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B09B92921D99200FD32B0 /* SceneDelegate.swift */; };
 		379B09BF2921D99200FD32B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 379B09BD2921D99200FD32B0 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		37298C7A2921E72E008543BE /* Finance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Finance.swift; sourceTree = "<group>"; };
+		3729D99129253B1900B09056 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		379B09B42921D99200FD32B0 /* WeRemember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeRemember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		379B09B72921D99200FD32B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		379B09B92921D99200FD32B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		37505BB52924B10D001F5ADE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3729D99129253B1900B09056 /* ExpenseTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		379B09AB2921D99200FD32B0 = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +83,7 @@
 				379B09B72921D99200FD32B0 /* AppDelegate.swift */,
 				379B09B92921D99200FD32B0 /* SceneDelegate.swift */,
 				37298C7C2921E753008543BE /* Model */,
+				37505BB52924B10D001F5ADE /* View */,
 				379B09D22921DA0E00FD32B0 /* View Controller */,
 				379B09BD2921D99200FD32B0 /* Main.storyboard */,
 				379B09C32921D99200FD32B0 /* Assets.xcassets */,
@@ -165,6 +176,7 @@
 			files = (
 				379B09B82921D99200FD32B0 /* AppDelegate.swift in Sources */,
 				379B09C22921D99200FD32B0 /* WeRemember.xcdatamodeld in Sources */,
+				3729D99229253B1900B09056 /* ExpenseTableViewCell.swift in Sources */,
 				379B09BA2921D99200FD32B0 /* SceneDelegate.swift in Sources */,
 				379B09D42921DA2800FD32B0 /* AddTableViewController.swift in Sources */,
 				37298C7B2921E72E008543BE /* Finance.swift in Sources */,

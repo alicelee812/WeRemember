@@ -25,6 +25,8 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
     var finance: Finance!
     var type = 0
     var AddTableViewController: AddTableViewController?
+    var categoryListSelected = ""
+    var accountListSelected = ""
     
     //支出與收入category
     var expenseCategory = ["飲食", "日常用品", "交通", "購物", "娛樂", "帳單", "其他"]
@@ -99,7 +101,7 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
     
     @IBAction func changeType(_ sender: UISegmentedControl) {
         AddTableViewController?.type = typeSegmentedControl.selectedSegmentIndex
-        
+
         switch typeSegmentedControl.selectedSegmentIndex {
         case 0:
             AddTableViewController?.categoryLabel.text = AddTableViewController?.expenseCategory[0]
@@ -410,14 +412,16 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let saveAmount = Int(amountTextField.text!) ?? 0
+        let saveMemo = memoTextField.text!
+        let saveCategory = categoryListSelected
+        let saveAccount = accountListSelected
+        finance = Finance(date: datePicker.date, amount: saveAmount, category: saveCategory, account: saveAccount, memo: saveMemo, isExpense: true, additionalPic: Data())
     }
-    */
+    
 
 }

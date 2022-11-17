@@ -35,16 +35,17 @@ class MainViewController: UIViewController {
         if let source = unwindSegue.source as? AddTableViewController,
            let expense = source.finance {
             
-            //由點選儲存格的方式進入下一頁
+            ////判斷資料是新增/編輯，有indexPath 為資料編輯，無indexPath 為資料新增
             if let indexPath = tableView.indexPathForSelectedRow?.row {
                 finances[indexPath] = expense
-                tableView.reloadData()
             } else {
                 
                 //由新增的方式進入下一頁
                 finances.insert(expense, at: 0)
-                tableView.reloadData()
+                let indexPath = IndexPath(row: 0, section: 0)
+                tableView.insertRows(at: [indexPath], with: .automatic)
             }
+            tableView.reloadData()
         }
     }
     
@@ -60,6 +61,16 @@ class MainViewController: UIViewController {
         controller?.showDateTextField = datePicker.date
         return controller
     }
+    
+    
+    @IBSegueAction func editExpenseItem(_ coder: NSCoder) -> AddTableViewController? {
+        let controller = AddTableViewController(coder: coder)
+        if let row = tableView.indexPathForSelectedRow?.row {
+            controller?.finance = finances[row]
+        }
+        return controller
+    }
+    
     
     func numberFormatter(amount: Int) -> String{
         let formatter = NumberFormatter()
@@ -123,6 +134,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }else{
             return "Expense: \(expenseAmount) Income: \(incomeAmount) Total: \(expenseAmount-incomeAmount)"
         }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        finances.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
 }

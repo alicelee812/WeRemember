@@ -78,6 +78,7 @@
                                             <outlet property="amountLabel" destination="iLa-9Y-VN3" id="GlD-Uj-g5W"/>
                                             <outlet property="categoryLabel" destination="4Dx-TE-SWo" id="wKv-S8-g0r"/>
                                             <outlet property="memoLabel" destination="bQ8-9R-ewb" id="C5O-77-QaM"/>
+                                            <segue destination="8CC-Lt-D1o" kind="show" destinationCreationSelector="editExpenseItem:" id="8MY-fu-m6C"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -245,6 +246,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="closeMemoKeyboard:" destination="8CC-Lt-D1o" eventType="editingDidEnd" id="GsF-iL-rov"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -347,22 +351,10 @@
             </objects>
             <point key="canvasLocation" x="913.84615384615381" y="-28.436018957345969"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Gge-nB-mAo">
-            <objects>
-                <viewController id="GWH-aY-PXO" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Tmg-mB-kJ9">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Ahg-41-t9p"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WdQ-fi-PMa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1843" y="664"/>
-        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="8MY-fu-m6C"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="93"/>
         <systemColor name="labelColor">

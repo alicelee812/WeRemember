@@ -33,3 +33,16 @@ struct Finance: Codable {
     
     
 }
+
+struct Spend {
+    static var expenseCategories: [ExpenseCategory] {
+        ExpenseCategory.allCases
+    }
+    static var incomeCategories: [IncomeCategory] {
+        IncomeCategory.allCases
+    }
+    static var account: [Account] {
+        Account.allCases
+    }
+    
+}

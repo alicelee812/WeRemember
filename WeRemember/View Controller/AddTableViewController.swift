@@ -22,7 +22,7 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
     @IBOutlet weak var cameraButton: UIButton!
     
     
-    var finance: Finance!
+    var finance: Finance?
     var type = 0
     var AddTableViewController: AddTableViewController?
     var categoryListSelected = ""
@@ -30,7 +30,7 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
     
     //支出與收入category
     var expenseCategory = ["飲食", "日常用品", "交通", "購物", "娛樂", "帳單", "其他"]
-    var incomeCategory = ["薪資", "獎金", "投資"]
+    var incomeCategory = ["薪資", "獎金", "投資", "禮金"]
     
     //支出與收入account
     var expenseAccount = ["現金", "銀行", "信用卡"]
@@ -100,21 +100,40 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
     
     
     @IBAction func changeType(_ sender: UISegmentedControl) {
-        AddTableViewController?.type = typeSegmentedControl.selectedSegmentIndex
-
-        switch typeSegmentedControl.selectedSegmentIndex {
-        case 0:
-            AddTableViewController?.categoryLabel.text = AddTableViewController?.expenseCategory[0]
-            AddTableViewController?.accountLabel.text = AddTableViewController?.expenseAccount[0]
-        case 1:
-            AddTableViewController?.categoryLabel.text = AddTableViewController?.incomeCategory[0]
-            AddTableViewController?.accountLabel.text = AddTableViewController?.incomeAccount[0]
-        default:
-            break
+        
+        if sender.selectedSegmentIndex == 0 {
+            finance?.isExpense = true
+            finance?.category = Spend.expenseCategories.first!.rawValue
+            categoryLabel.text = Spend.expenseCategories.first?.rawValue
+        }else{
+            finance?.isExpense = false
+            finance?.category = Spend.incomeCategories.first!.rawValue
+            categoryLabel.text = Spend.incomeCategories.first?.rawValue
+            
         }
-        AddTableViewController?.categoryList.dataSource = AddTableViewController
-        AddTableViewController?.accountList.dataSource = AddTableViewController
+        
+        
+//        AddTableViewController?.type = typeSegmentedControl.selectedSegmentIndex
+//        switch typeSegmentedControl.selectedSegmentIndex {
+//        case 0:
+//            AddTableViewController?.categoryLabel.text = AddTableViewController?.expenseCategory[0]
+//            AddTableViewController?.accountLabel.text = AddTableViewController?.expenseAccount[0]
+//        case 1:
+//            AddTableViewController?.categoryLabel.text = AddTableViewController?.incomeCategory[0]
+//            AddTableViewController?.accountLabel.text = AddTableViewController?.incomeAccount[0]
+//        default:
+//            break
+//        }
+//        AddTableViewController?.categoryList.dataSource = AddTableViewController
+//        AddTableViewController?.accountList.dataSource = AddTableViewController
     }
+    
+    
+    @IBAction func closeMemoKeyboard(_ sender: UITextField) {
+    }
+    
+    
+    
     
     
     @IBAction func changePic(_ sender: UIButton) {
@@ -228,7 +247,6 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
                 
                 return expenseCategory.count
             } else {
-                
                 return incomeCategory.count
             }
             
@@ -237,7 +255,6 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
                 
                 return expenseAccount.count
             } else {
-                
                 return incomeAccount.count
             }
             

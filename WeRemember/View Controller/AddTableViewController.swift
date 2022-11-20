@@ -431,7 +431,8 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
 
     
     // MARK: - Navigation
-     
+
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let saveAmount = Int(amountTextField.text!) ?? 0
         let saveMemo = memoTextField.text!
@@ -439,6 +440,7 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
         let saveAccount = accountListSelected
         finance = Finance(date: datePicker.date, amount: saveAmount, category: saveCategory, account: saveAccount, memo: saveMemo, isExpense: true, additionalPic: Data())
     }
+
     
 
 }

@@ -51,8 +51,9 @@ class MainViewController: UIViewController {
     
     //Calvin
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        if segue.identifier == "showAddTable"{
+        if segue.identifier == "ShowAddTable" {
             if let addTable = segue.destination as? AddTableViewController,
                let targetController = addTable.AddTableViewController,
                let row = tableView.indexPathForSelectedRow?.row{
@@ -67,6 +68,7 @@ class MainViewController: UIViewController {
             }
         }
     }
+
     
     
     @IBAction func dateAction(_ sender: Any) {

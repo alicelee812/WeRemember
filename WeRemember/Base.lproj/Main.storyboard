@@ -78,10 +78,14 @@
                                             <outlet property="amountLabel" destination="iLa-9Y-VN3" id="GlD-Uj-g5W"/>
                                             <outlet property="categoryLabel" destination="4Dx-TE-SWo" id="wKv-S8-g0r"/>
                                             <outlet property="memoLabel" destination="bQ8-9R-ewb" id="C5O-77-QaM"/>
-                                            <segue destination="8CC-Lt-D1o" kind="show" identifier="showAddTable" destinationCreationSelector="editExpenseItem:" id="8MY-fu-m6C"/>
+                                            <segue destination="8CC-Lt-D1o" kind="show" identifier="ShowAddTable" id="bOf-Wc-ZXc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="5gN-Wd-shH" id="0iI-ek-vvR"/>
+                                    <outlet property="delegate" destination="5gN-Wd-shH" id="N3V-St-zQc"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gb9-Tp-3Qq"/>
@@ -95,12 +99,13 @@
                     <navigationItem key="navigationItem" id="pJa-E9-qqU">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hNP-Mq-Gss">
                             <connections>
-                                <segue destination="8CC-Lt-D1o" kind="show" destinationCreationSelector="showDate:" id="2wX-nc-1YE"/>
+                                <segue destination="8CC-Lt-D1o" kind="show" id="n7p-Kk-6M1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="datePicker" destination="3gU-ov-OMp" id="2Em-e6-C7E"/>
+                        <outlet property="tableView" destination="GHA-nC-fo2" id="dcp-1G-qIQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EpY-S9-YZk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -221,8 +226,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="359.66666666666669" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="類別" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y10-Ng-bLH">
-                                                    <rect key="frame" x="20" y="12" width="208" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="類別" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjO-PG-WKo">
+                                                    <rect key="frame" x="20" y="12" width="35" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="類別" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y10-Ng-bLH">
+                                                    <rect key="frame" x="147" y="12" width="204" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -256,8 +268,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="359.66666666666669" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="帳戶" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jix-vt-IlB">
-                                                    <rect key="frame" x="20" y="11" width="205" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="帳戶" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohA-Xu-xjU">
+                                                    <rect key="frame" x="20" y="11" width="35" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="帳戶" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jix-vt-IlB">
+                                                    <rect key="frame" x="137" y="11" width="214" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -369,7 +388,7 @@
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="jjM-UI-HD7">
                             <connections>
-                                <segue destination="NXl-zN-ABb" kind="unwind" unwindAction="unwindToAddTableView:" id="uV3-Wt-IoO"/>
+                                <segue destination="NXl-zN-ABb" kind="unwind" unwindAction="unwindToMainVC:" id="Gdu-a2-iNP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -388,7 +407,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elz-T3-LWh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="NXl-zN-ABb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2794" y="-28"/>
+            <point key="canvasLocation" x="2746" y="-28"/>
         </scene>
         <!--記帳-->
         <scene sceneID="f9c-8g-RcG">
@@ -447,37 +466,9 @@
             </objects>
             <point key="canvasLocation" x="-272" y="316"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="HeL-Rz-12V">
-            <objects>
-                <tableViewController id="qOI-JY-enA" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="m0m-GG-gq8">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Yk3-qq-PmC">
-                                <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yk3-qq-PmC" id="r8m-Pk-kHq">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="qOI-JY-enA" id="ad7-gs-hNl"/>
-                            <outlet property="delegate" destination="qOI-JY-enA" id="1Hb-db-v2s"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T21-CD-2ou" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1086" y="-707"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="8MY-fu-m6C"/>
+        <segue reference="bOf-Wc-ZXc"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="93"/>

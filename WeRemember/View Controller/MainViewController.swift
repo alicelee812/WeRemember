@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindToMainScene(_ unwindSegue: UIStoryboardSegue) {
+    @IBAction func unwindToMainVC(_ unwindSegue: UIStoryboardSegue) {
         //取得由Add畫面傳回的expense
         if let source = unwindSegue.source as? AddTableViewController,
            let expense = source.finance {
@@ -49,7 +49,24 @@ class MainViewController: UIViewController {
         }
     }
     
+    //Calvin
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "showAddTable"{
+            if let addTable = segue.destination as? AddTableViewController,
+               let targetController = addTable.AddTableViewController,
+               let row = tableView.indexPathForSelectedRow?.row{
+                targetController.finance = finances[row]
+                print("給資料")
+            }
+        }else{
+            if let addTable = segue.destination as? AddTableViewController,
+               let targetController = addTable.AddTableViewController {
+                targetController.selectedDate = dateFormatter(date: datePicker.date)
+                print("給date \(dateFormatter(date: datePicker.date))")
+            }
+        }
+    }
     
     
     @IBAction func dateAction(_ sender: Any) {
@@ -82,6 +99,12 @@ class MainViewController: UIViewController {
         return amountString
     }
     
+    func dateFormatter(date:Date)-> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E, MM d, yyyy"
+        let dateStr = dateFormatter.string(from: date)
+        return dateStr
+    }
     
     
     /*

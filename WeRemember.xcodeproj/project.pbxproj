@@ -10,6 +10,9 @@
 		37298C7B2921E72E008543BE /* Finance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37298C7A2921E72E008543BE /* Finance.swift */; };
 		3729D99229253B1900B09056 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729D99129253B1900B09056 /* ExpenseTableViewCell.swift */; };
 		373B06B729261E7800329EEC /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B06B629261E7800329EEC /* Enums.swift */; };
+		373B06BA2926280300329EEC /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 373B06B92926280300329EEC /* Charts */; };
+		373B06BC2926286D00329EEC /* AnalyzeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B06BB2926286D00329EEC /* AnalyzeTableViewController.swift */; };
+		373B06BE2926287E00329EEC /* AnalyzeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B06BD2926287E00329EEC /* AnalyzeTableViewCell.swift */; };
 		379B09B82921D99200FD32B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B09B72921D99200FD32B0 /* AppDelegate.swift */; };
 		379B09BA2921D99200FD32B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B09B92921D99200FD32B0 /* SceneDelegate.swift */; };
 		379B09BF2921D99200FD32B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 379B09BD2921D99200FD32B0 /* Main.storyboard */; };
@@ -24,6 +27,8 @@
 		37298C7A2921E72E008543BE /* Finance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Finance.swift; sourceTree = "<group>"; };
 		3729D99129253B1900B09056 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		373B06B629261E7800329EEC /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		373B06BB2926286D00329EEC /* AnalyzeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeTableViewController.swift; sourceTree = "<group>"; };
+		373B06BD2926287E00329EEC /* AnalyzeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeTableViewCell.swift; sourceTree = "<group>"; };
 		379B09B42921D99200FD32B0 /* WeRemember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeRemember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		379B09B72921D99200FD32B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		379B09B92921D99200FD32B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				373B06BA2926280300329EEC /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				3729D99129253B1900B09056 /* ExpenseTableViewCell.swift */,
+				373B06BD2926287E00329EEC /* AnalyzeTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -102,6 +109,7 @@
 			children = (
 				379B09D52921DEB100FD32B0 /* MainViewController.swift */,
 				379B09D32921DA2800FD32B0 /* AddTableViewController.swift */,
+				373B06BB2926286D00329EEC /* AnalyzeTableViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -122,6 +130,9 @@
 			dependencies = (
 			);
 			name = WeRemember;
+			packageProductDependencies = (
+				373B06B92926280300329EEC /* Charts */,
+			);
 			productName = WeRemember;
 			productReference = 379B09B42921D99200FD32B0 /* WeRemember.app */;
 			productType = "com.apple.product-type.application";
@@ -150,6 +161,9 @@
 				Base,
 			);
 			mainGroup = 379B09AB2921D99200FD32B0;
+			packageReferences = (
+				373B06B82926280300329EEC /* XCRemoteSwiftPackageReference "Charts" */,
+			);
 			productRefGroup = 379B09B52921D99200FD32B0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -177,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				373B06BE2926287E00329EEC /* AnalyzeTableViewCell.swift in Sources */,
 				379B09B82921D99200FD32B0 /* AppDelegate.swift in Sources */,
 				379B09C22921D99200FD32B0 /* WeRemember.xcdatamodeld in Sources */,
 				3729D99229253B1900B09056 /* ExpenseTableViewCell.swift in Sources */,
@@ -184,6 +199,7 @@
 				379B09D42921DA2800FD32B0 /* AddTableViewController.swift in Sources */,
 				37298C7B2921E72E008543BE /* Finance.swift in Sources */,
 				373B06B729261E7800329EEC /* Enums.swift in Sources */,
+				373B06BC2926286D00329EEC /* AnalyzeTableViewController.swift in Sources */,
 				379B09D62921DEB100FD32B0 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,6 +418,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		373B06B82926280300329EEC /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		373B06B92926280300329EEC /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 373B06B82926280300329EEC /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		379B09C02921D99200FD32B0 /* WeRemember.xcdatamodeld */ = {

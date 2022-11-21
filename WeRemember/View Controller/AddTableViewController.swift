@@ -74,6 +74,10 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
         categoryLabel.text = expenseCategory[0]
         accountLabel.text = expenseAccount[0]
         
+        
+        memoTextField.returnKeyType = UIReturnKeyType.done
+        
+        
         updateUI()
     }
 
@@ -97,6 +101,16 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
         
         //設定keyboard
         amountTextField.keyboardType = .numberPad
+        
+        if let finance = finance {
+            amountTextField.text = finance.amount.description
+            categoryLabel.text = finance.category
+            memoTextField.text = finance.memo
+            accountLabel.text = finance.account
+        }
+        
+        
+        
         
     }
     
@@ -444,7 +458,7 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let saveAmount = Int(amountTextField.text!) ?? 0
-        let saveMemo = memoTextField.text!
+        let saveMemo = memoTextField.text ?? ""
         let saveCategory = categoryListSelected
         let saveAccount = accountListSelected
         finance = Finance(date: datePicker.date, amount: saveAmount, category: saveCategory, account: saveAccount, memo: saveMemo, isExpense: true, additionalPic: Data())

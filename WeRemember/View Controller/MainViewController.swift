@@ -33,15 +33,16 @@ class MainViewController: UIViewController {
     @IBAction func unwindToMainVC(_ unwindSegue: UIStoryboardSegue) {
         //取得由Add畫面傳回的expense
         if let source = unwindSegue.source as? AddTableViewController,
-           let expense = source.finance {
+           let finance = source.finance {
             
-            ////判斷資料是新增/編輯，有indexPath 為資料編輯，無indexPath 為資料新增
+            
+            //判斷資料是新增/編輯，有indexPath 為資料編輯，無indexPath 為資料新增
             if let indexPath = tableView.indexPathForSelectedRow?.row {
-                finances[indexPath] = expense
+                finances[indexPath] = finance
             } else {
                 
                 //由新增的方式進入下一頁
-                finances.insert(expense, at: 0)
+                finances.insert(finance, at: 0)
                 let indexPath = IndexPath(row: 0, section: 0)
                 tableView.insertRows(at: [indexPath], with: .automatic)
             }
@@ -49,25 +50,23 @@ class MainViewController: UIViewController {
         }
     }
     
-    //Calvin
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        if segue.identifier == "ShowAddTable" {
-            if let addTable = segue.destination as? AddTableViewController,
-               let targetController = addTable.AddTableViewController,
-               let row = tableView.indexPathForSelectedRow?.row{
-                targetController.finance = finances[row]
-                print("給資料")
-            }
-        }else{
-            if let addTable = segue.destination as? AddTableViewController,
-               let targetController = addTable.AddTableViewController {
-                targetController.selectedDate = dateFormatter(date: datePicker.date)
-                print("給date \(dateFormatter(date: datePicker.date))")
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+//        if segue.identifier == "ShowAddTable" {
+//            if let addTable = segue.destination as? AddTableViewController,
+//               let targetController = addTable.AddTableViewController,
+//               let row = tableView.indexPathForSelectedRow?.row{
+//                targetController.finance = finances[row]
+//                print("給資料")
+//            }
+//        }else{
+//            if let addTable = segue.destination as? AddTableViewController,
+//               let targetController = addTable.AddTableViewController {
+//                targetController.selectedDate = dateFormatter(date: datePicker.date)
+//                print("給date \(dateFormatter(date: datePicker.date))")
+//            }
+//        }
+//    }
 
     
     
@@ -133,21 +132,22 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(ExpenseTableViewCell.self)", for: indexPath) as? ExpenseTableViewCell else { return UITableViewCell() }
         let expenseItem = finances[indexPath.row]
         print(cell)
-        cell.amountLabel.text = numberFormatter(amount: expenseItem.amount)
-        cell.accountLabel.text = expenseItem.account
-        cell.memoLabel.text = expenseItem.memo
+        cell.amountLabel?.text = numberFormatter(amount: expenseItem.amount)
+        cell.accountLabel?.text = expenseItem.account
+        cell.memoLabel?.text = expenseItem.memo
+        cell.categoryLabel?.text = expenseItem.category
         
-        if expenseItem.isExpense == true {
-            cell.categoryLabel.text = expenseItem.category
-            //cell.categoryImageView.image = UIImage(named: "\(expenseItem.category!)")
-            cell.amountLabel.backgroundColor = UIColor.clear
-            cell.amountLabel.textColor = UIColor.black
-        }else{
-            cell.categoryLabel.text = expenseItem.category
-            //cell.categoryImageView.image = UIImage(named: expenseItem.category ?? "")
-            cell.amountLabel.backgroundColor = UIColor.systemGreen
-            cell.amountLabel.textColor = UIColor.white
-        }
+//        if expenseItem.isExpense == true {
+//            cell.categoryLabel.text = expenseItem.category
+//            //cell.categoryImageView.image = UIImage(named: "\(expenseItem.category!)")
+//            cell.amountLabel.backgroundColor = UIColor.clear
+//            cell.amountLabel.textColor = UIColor.black
+//        }else{
+//            cell.categoryLabel.text = expenseItem.category
+//            //cell.categoryImageView.image = UIImage(named: expenseItem.category ?? "")
+//            cell.amountLabel.backgroundColor = UIColor.systemGreen
+//            cell.amountLabel.textColor = UIColor.white
+//        }
         return cell
     }
     
@@ -164,6 +164,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         finances.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
+        tableView.reloadData()
     }
     
 }

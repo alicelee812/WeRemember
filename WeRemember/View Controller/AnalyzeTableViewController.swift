@@ -14,9 +14,12 @@ class AnalyzeTableViewController: UITableViewController {
     
     var allExpenseItems = [Finance]()
     
+    override func viewWillAppear(_ animated: Bool) {
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     //生成項目數據 DataEntry

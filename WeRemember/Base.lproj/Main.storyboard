@@ -329,15 +329,15 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="250" id="rSI-XF-Rop" userLabel="Image Cell">
-                                        <rect key="frame" x="0.0" y="477.66667175292969" width="390" height="250"/>
+                                    <tableViewCell clipsSubviews="YES" tag="2" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="190" id="rSI-XF-Rop" userLabel="Image Cell">
+                                        <rect key="frame" x="0.0" y="477.66667175292969" width="390" height="190"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rSI-XF-Rop" id="idb-bd-hhe">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="250"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="190"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abD-UZ-nuB">
-                                                    <rect key="frame" x="78" y="8" width="234" height="210"/>
+                                                    <rect key="frame" x="78" y="8" width="181" height="153"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -407,7 +407,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elz-T3-LWh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="NXl-zN-ABb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2746" y="-28"/>
+            <point key="canvasLocation" x="2743.0769230769229" y="-28.436018957345969"/>
         </scene>
         <!--記帳-->
         <scene sceneID="f9c-8g-RcG">

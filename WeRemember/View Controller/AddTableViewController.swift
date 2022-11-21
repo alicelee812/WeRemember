@@ -39,11 +39,13 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
     
     // Picker的顯示狀態
     var isCategoryList = false
-    var icAccountList = false
+    var isAccountList = false
+    var isPicShown = false
     
     // 包含Picker的Cell位置
     let categoryListCellIndexPath = IndexPath(row: 3, section: 0)
     let accountListCellIndexPath = IndexPath(row: 5, section: 0)
+    let pictureCellIndexPath = IndexPath(row: 7, section: 0)
     
     
     //【MVC選日期在ATVC顯示】宣告儲存Date型別的屬性showDateTextField
@@ -325,7 +327,7 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return 0.1
+        return 10
     }
     
     
@@ -346,10 +348,10 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
             tableView.endUpdates()
             
         case (accountListCellIndexPath.section, accountListCellIndexPath.row - 1):
-            if icAccountList == true {
-                icAccountList = false
+            if isAccountList == true {
+                isAccountList = false
             } else {
-                icAccountList = true
+                isAccountList = true
             }
             
             tableView.beginUpdates()
@@ -373,14 +375,21 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
             }
             
         case accountListCellIndexPath:
-            if icAccountList == true {
-                return 80
+            if isAccountList == true {
+                return 110
             } else {
                 return 0
             }
             
+        case pictureCellIndexPath:
+            if isPicShown == true {
+                return 160
+            } else {
+                return 160
+            }
+            
         default:
-            return 60
+            return UITableView.automaticDimension
         }
     }
 

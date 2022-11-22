@@ -25,8 +25,9 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
     var finance: Finance?
     var type = 0
     var AddTableViewController: AddTableViewController?
-    var categoryListSelected = ""
-    var accountListSelected = ""
+    
+    
+    var pickerItemList = [String]()
     
     //支出與收入category
     var expenseCategory = ["飲食", "日常用品", "交通", "購物", "娛樂", "帳單", "其他"]
@@ -77,6 +78,8 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
         
         memoTextField.returnKeyType = UIReturnKeyType.done
         
+        categoryList.delegate = self
+        
         
         updateUI()
     }
@@ -109,14 +112,25 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
             accountLabel.text = finance.account
         }
         
-        
-        
-        
     }
     
     
     @IBAction func changeType(_ sender: UISegmentedControl) {
         
+        switch sender.selectedSegmentIndex {
+        case 0:
+            pickerItemList = expenseCategory
+        case 1:
+            pickerItemList = incomeCategory
+        default:
+            break
+        }
+                
+        categoryList.reloadAllComponents()
+        categoryList.selectRow(0, inComponent: 0, animated: true)
+        
+        
+        /*
         if sender.selectedSegmentIndex == 0 {
             finance?.isExpense = true
             finance?.category = Spend.expenseCategories.first!.rawValue
@@ -125,8 +139,10 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
             finance?.isExpense = false
             finance?.category = Spend.incomeCategories.first!.rawValue
             categoryLabel.text = Spend.incomeCategories.first?.rawValue
-            
         }
+        categoryList.reloadAllComponents()
+        categoryList.selectRow(0, inComponent: 0, animated: true)
+         */
         
         
 //        AddTableViewController?.type = typeSegmentedControl.selectedSegmentIndex
@@ -183,8 +199,13 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
             }
         }
         
+        let cancelAlert = UIAlertAction(title: "取消", style: .cancel) {
+            (action) in
+        }
+        
         imageSourceAlert.addAction(cameraAction)
         imageSourceAlert.addAction(photoLibraryAction)
+        imageSourceAlert.addAction(cancelAlert)
         
         present(imageSourceAlert, animated: true, completion: nil)
     }
@@ -277,6 +298,7 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
         default:
             return 0
         }
+        
     }
     
     
@@ -315,20 +337,19 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
             
         case categoryList:
             if type == 0 {
-                
                 categoryLabel.text = expenseCategory[row]
             } else {
-                
                 categoryLabel.text = incomeCategory[row]
             }
+           
             
         case accountList:
             if type == 0 {
                 
                 accountLabel.text = expenseAccount[row]
             } else {
-                
                 accountLabel.text = incomeAccount[row]
+                
             }
         default:
             break
@@ -459,9 +480,10 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let saveAmount = Int(amountTextField.text!) ?? 0
         let saveMemo = memoTextField.text ?? ""
-        let saveCategory = categoryListSelected
-        let saveAccount = accountListSelected
-        finance = Finance(date: datePicker.date, amount: saveAmount, category: saveCategory, account: saveAccount, memo: saveMemo, isExpense: true, additionalPic: Data())
+        let saveCategory = categoryLabel.text ?? ""
+        let saveAccount = accountLabel.text ?? ""
+        let savePic = cameraButton.description
+        finance = Finance(date: datePicker.date, amount: saveAmount, category: saveCategory, account: saveAccount, memo: saveMemo, isExpense: true, additionalPic: savePic)
     }
 
     

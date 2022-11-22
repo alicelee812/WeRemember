@@ -14,7 +14,7 @@ struct Finance: Codable {
     var account: String
     var memo: String
     var isExpense: Bool
-    var additionalPic: Data
+    var additionalPic: String
     
     
     static func loadFinances() -> [Finance]? {

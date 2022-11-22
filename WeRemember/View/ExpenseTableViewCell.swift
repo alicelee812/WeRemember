@@ -9,7 +9,8 @@ import UIKit
 
 class ExpenseTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var additionalPic: UIImageView!
+    
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var memoLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!

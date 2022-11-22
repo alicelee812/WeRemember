@@ -392,6 +392,7 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
             tableView.beginUpdates()
             tableView.endUpdates()
             
+            
         default:
             break
         }
@@ -482,8 +483,8 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
         let saveMemo = memoTextField.text ?? ""
         let saveCategory = categoryLabel.text ?? ""
         let saveAccount = accountLabel.text ?? ""
-        let savePic = cameraButton.description
-        finance = Finance(date: datePicker.date, amount: saveAmount, category: saveCategory, account: saveAccount, memo: saveMemo, isExpense: true, additionalPic: savePic)
+        let savedate = datePicker.date
+        finance = Finance(date: savedate, amount: saveAmount, category: saveCategory, account: saveAccount, memo: saveMemo, isExpense: true, additionalPic: Data())
     }
 
     

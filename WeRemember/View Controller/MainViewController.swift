@@ -81,12 +81,23 @@ class MainViewController: UIViewController {
     }
     
     
+    /*
     @IBSegueAction func editExpenseItem(_ coder: NSCoder) -> AddTableViewController? {
         let controller = AddTableViewController(coder: coder)
         if let row = tableView.indexPathForSelectedRow?.row {
             controller?.finance = finances[row]
         }
         return controller
+    }
+    */
+    
+    
+    //將要修改的資料傳到下一頁
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? AddTableViewController,
+           let row = tableView.indexPathForSelectedRow?.row {
+            controller.finance = finances[row]
+        }
     }
     
     
@@ -102,7 +113,7 @@ class MainViewController: UIViewController {
     
     func dateFormatter(date:Date)-> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E, MM d, yyyy"
+        dateFormatter.dateFormat = "yyyy/MM/dd"
         let dateStr = dateFormatter.string(from: date)
         return dateStr
     }
@@ -136,6 +147,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         cell.accountLabel?.text = expenseItem.account
         cell.memoLabel?.text = expenseItem.memo
         cell.categoryLabel?.text = expenseItem.category
+        cell.dateLabel?.text = dateFormatter(date: expenseItem.date)
         
 //        if expenseItem.isExpense == true {
 //            cell.categoryLabel.text = expenseItem.category

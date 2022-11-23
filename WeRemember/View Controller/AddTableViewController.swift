@@ -23,7 +23,7 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
     
     
     var finance: Finance?
-    var type = 0
+    var type: Bool?
     var AddTableViewController: AddTableViewController?
     
     
@@ -119,9 +119,14 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
         
         switch sender.selectedSegmentIndex {
         case 0:
-            pickerItemList = expenseCategory
+            if type == true {
+                pickerItemList = expenseCategory
+            }
+            
         case 1:
-            pickerItemList = incomeCategory
+            if type == false {
+                pickerItemList = incomeCategory
+            }
         default:
             break
         }
@@ -280,15 +285,14 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
         switch pickerView {
             
         case categoryList:
-            if type == 0 {
-                
+            if typeSegmentedControl.selectedSegmentIndex == 0 {
                 return expenseCategory.count
             } else {
                 return incomeCategory.count
             }
             
         case accountList:
-            if type == 0 {
+            if type == true {
                 
                 return expenseAccount.count
             } else {
@@ -298,7 +302,6 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
         default:
             return 0
         }
-        
     }
     
     
@@ -308,16 +311,16 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
         switch pickerView {
             
         case categoryList:
-            if type == 0 {
-                
+            if typeSegmentedControl.selectedSegmentIndex == 0 {
+
                 return expenseCategory[row]
             } else {
-                
+
                 return incomeCategory[row]
             }
             
         case accountList:
-            if type == 0 {
+            if type == true {
                 
                 return expenseAccount[row]
             } else {
@@ -332,24 +335,24 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
     
     // 選擇列後要做什麼？依據不同滾輪、收支和所在列，顯示不同的資料
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
+
         switch pickerView {
-            
+
         case categoryList:
-            if type == 0 {
+            if typeSegmentedControl.selectedSegmentIndex == 0 {
                 categoryLabel.text = expenseCategory[row]
             } else {
                 categoryLabel.text = incomeCategory[row]
             }
-           
-            
+
+
         case accountList:
-            if type == 0 {
-                
+            if type == true {
+
                 accountLabel.text = expenseAccount[row]
             } else {
                 accountLabel.text = incomeAccount[row]
-                
+
             }
         default:
             break

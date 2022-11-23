@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signupButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,70 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
+    @IBAction func loginAction(_ sender: Any) {
+        let url = URL(string: "https://favqs.com/api/session")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "post"
+        request.setValue("Token token=09d6d89b94f38b97acbe3f1f47a1ef9d", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let account = accountTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        let body = UserBody(user: User(login: account, password: password))
+        request.httpBody = try? JSONEncoder().encode(body)
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data {
+                do {
+                    let userResponse = try JSONDecoder().decode(UserResponse.self, from: data)
+                    print(userResponse)
+                    UserDefaults.standard.set(userResponse.userToken, forKey: "token")
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "showHome", sender: nil)
+                    }
+                    
+                } catch  {
+                    print(error)
+                }
+            }
+        }.resume()
+    }
+   
+    
+    
+    @IBAction func registerAction(_ sender: Any) {
+        let controller = UIAlertController(title: "註冊成功", message: nil, preferredStyle: .alert)
+        let action = UIAlertAction(title: "確認", style: .default, handler: nil)
+        controller.addAction(action)
+        present(controller, animated: true, completion: nil)
+        
+//        let url = URL(string: "https://favqs.com/api/users")!
+//            var request = URLRequest(url: url)
+//            request.httpMethod = "post"
+//            request.setValue("Token token=09d6d89b94f38b97acbe3f1f47a1ef9d", forHTTPHeaderField: "Authorization")
+//            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//            let account = accountTextField.text ?? ""
+//            let password = passwordTextField.text ?? ""
+//            let body = UserBody(user: User(login: account, password: password))
+//            request.httpBody = try? JSONEncoder().encode(body)
+//            URLSession.shared.dataTask(with: request) { data, response, error in
+//                if let data {
+//                    print(String(data: data, encoding: .utf8)!)
+//                    DispatchQueue.main.async {
+//                        self.performSegue(withIdentifier: "showHome", sender: nil)
+//                    }
+//                    do {
+//                        let userResponse = try JSONDecoder().decode(UserResponse.self, from: data)
+//                        print(userResponse)
+//                    } catch  {
+//                        print(error)
+//                    }
+//                }
+//            }.resume()
+    }
+    
+    
+    //firebase電子信箱與密碼登入
+    /*
     @IBAction func loginAction(_ sender: Any) {
         if self.accountTextField.text == "" || self.passwordTextField.text == "" {
             
@@ -60,6 +125,7 @@ class LoginViewController: UIViewController {
             }
         }
     }
+     */
 
     
 }

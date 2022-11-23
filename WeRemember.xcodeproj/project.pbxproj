@@ -12,6 +12,7 @@
 		370100FF292E43CD00C2D190 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 370100FE292E43CD00C2D190 /* FirebaseFirestoreSwift */; };
 		37010101292E43CD00C2D190 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 37010100292E43CD00C2D190 /* FirebaseStorage */; };
 		37010103292E457900C2D190 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37010102292E457900C2D190 /* LoginViewController.swift */; };
+		37010105292E71F700C2D190 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37010104292E71F700C2D190 /* User.swift */; };
 		37298C7B2921E72E008543BE /* Finance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37298C7A2921E72E008543BE /* Finance.swift */; };
 		3729D99229253B1900B09056 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729D99129253B1900B09056 /* ExpenseTableViewCell.swift */; };
 		373B06B729261E7800329EEC /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B06B629261E7800329EEC /* Enums.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		370100F9292E3EA700C2D190 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		37010102292E457900C2D190 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		37010104292E71F700C2D190 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		37298C7A2921E72E008543BE /* Finance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Finance.swift; sourceTree = "<group>"; };
 		3729D99129253B1900B09056 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		373B06B629261E7800329EEC /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			children = (
 				37298C7A2921E72E008543BE /* Finance.swift */,
 				373B06B629261E7800329EEC /* Enums.swift */,
+				37010104292E71F700C2D190 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				379B09D42921DA2800FD32B0 /* AddTableViewController.swift in Sources */,
 				37298C7B2921E72E008543BE /* Finance.swift in Sources */,
 				373B06B729261E7800329EEC /* Enums.swift in Sources */,
+				37010105292E71F700C2D190 /* User.swift in Sources */,
 				373B06BC2926286D00329EEC /* AnalyzeTableViewController.swift in Sources */,
 				379B09D62921DEB100FD32B0 /* MainViewController.swift in Sources */,
 				37010103292E457900C2D190 /* LoginViewController.swift in Sources */,

@@ -25,6 +25,7 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
     var finance: Finance?
     var type: Bool?
     var AddTableViewController: AddTableViewController?
+    var isExpenseCategory:Bool?
     
     
     var pickerItemList = [String]()
@@ -110,6 +111,7 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
             categoryLabel.text = finance.category
             memoTextField.text = finance.memo
             accountLabel.text = finance.account
+            isExpenseCategory = finance.isExpense
         }
         
     }
@@ -120,11 +122,15 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
         switch sender.selectedSegmentIndex {
         case 0:
             if type == true {
+                isExpenseCategory = true
+                finance?.isExpense = true
                 pickerItemList = expenseCategory
             }
             
         case 1:
             if type == false {
+                isExpenseCategory = false
+                finance?.isExpense = false
                 pickerItemList = incomeCategory
             }
         default:
@@ -315,7 +321,7 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
 
                 return expenseCategory[row]
             } else {
-
+                categoryLabel.text = Spend.incomeCategories.first?.rawValue
                 return incomeCategory[row]
             }
             
@@ -487,7 +493,8 @@ class AddTableViewController: UITableViewController, UIPickerViewDelegate,  UIPi
         let saveCategory = categoryLabel.text ?? ""
         let saveAccount = accountLabel.text ?? ""
         let savedate = datePicker.date
-        finance = Finance(date: savedate, amount: saveAmount, category: saveCategory, account: saveAccount, memo: saveMemo, isExpense: true, additionalPic: Data())
+        finance?.isExpense = isExpenseCategory ?? true
+        finance = Finance(date: savedate, amount: saveAmount, category: saveCategory, account: saveAccount, memo: saveMemo, isExpense: isExpenseCategory ?? true, additionalPic: Data())
     }
 
     

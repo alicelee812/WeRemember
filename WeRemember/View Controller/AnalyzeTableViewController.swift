@@ -15,6 +15,7 @@ class AnalyzeTableViewController: UITableViewController {
     var allExpenseItems = [Finance]()
     
     override func viewWillAppear(_ animated: Bool) {
+       
 
     }
     
@@ -29,6 +30,7 @@ class AnalyzeTableViewController: UITableViewController {
         let pieChartDataEntries = Spend.expenseCategories.map({(category)->PieChartDataEntry in
             return PieChartDataEntry(value: Double(calculateSum(category: category)), label: category.rawValue)
         })
+        
         
         //設定項目 DataSet
         let dataSet = PieChartDataSet(entries: pieChartDataEntries, label: "")
@@ -88,6 +90,14 @@ class AnalyzeTableViewController: UITableViewController {
             let totalAmount = allExpenseItems.reduce(0,{if $1.category == category.rawValue{
                                                     return $0+Int($1.amount) };return $0})
             return Int32(totalAmount)
+        }
+    
+        func dateFormatter(date:Date)-> String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "E, MMM d, yyyy"
+            let dateStr = dateFormatter.string(from: date)
+            return dateStr
+            
         }
     
         func numberFormatter(amount:Int32)->String{

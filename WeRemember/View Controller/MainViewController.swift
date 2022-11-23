@@ -9,7 +9,6 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    
     var finances = [Finance]() {
         didSet {
             //儲存資料
@@ -163,7 +162,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+            
         let expenseAmount = finances.reduce(0, {if $1.isExpense==true { return $0+Int($1.amount)};return $0})
         let incomeAmount = finances.reduce(0, {if $1.isExpense==false { return $0+Int($1.amount)};return $0})
         if finances.isEmpty{

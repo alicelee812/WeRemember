@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,5 +128,7 @@ class LoginViewController: UIViewController {
     }
      */
 
+    @IBAction func noAction(_ sender: Any) {
+    }
     
 }

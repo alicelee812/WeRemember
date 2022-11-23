@@ -481,7 +481,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="loginAction:" destination="7vX-Xb-qXn" eventType="touchUpInside" id="a50-7h-9gE"/>
-                                    <segue destination="mdT-58-wGj" kind="presentation" identifier="showHome" modalPresentationStyle="fullScreen" id="UfR-BL-Umm"/>
+                                    <segue destination="mdT-58-wGj" kind="presentation" identifier="showHome" modalPresentationStyle="currentContext" id="UfR-BL-Umm"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FyY-LT-IKR">
@@ -534,6 +534,19 @@
                                     <action selector="registerAction:" destination="7vX-Xb-qXn" eventType="touchUpInside" id="yH0-q9-b3o"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0t-Bq-fJS">
+                                <rect key="frame" x="70" y="754" width="251" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="SKIP">
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="noAction:" destination="7vX-Xb-qXn" eventType="touchUpInside" id="P6a-P2-Opa"/>
+                                    <segue destination="mdT-58-wGj" kind="showDetail" id="sze-PO-Bvt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VJx-y0-7bp"/>
                         <color key="backgroundColor" red="0.97298258543014526" green="0.88846684557616584" blue="0.40138661016754568" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -541,6 +554,7 @@
                     <navigationItem key="navigationItem" id="IMw-gI-nep"/>
                     <connections>
                         <outlet property="accountTextField" destination="uTV-cK-HYi" id="6W9-pa-RPm"/>
+                        <outlet property="cancelButton" destination="Y0t-Bq-fJS" id="xCj-l7-MGb"/>
                         <outlet property="loginButton" destination="6NA-Wi-fgK" id="k1D-fI-0UP"/>
                         <outlet property="passwordTextField" destination="uTV-cK-HYi" id="osT-JL-dkg"/>
                         <outlet property="signupButton" destination="K2Y-2L-4bA" id="EV2-1C-HvO"/>
@@ -572,6 +586,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="UfR-BL-Umm"/>
         <segue reference="bOf-Wc-ZXc"/>
     </inferredMetricsTieBreakers>
     <resources>

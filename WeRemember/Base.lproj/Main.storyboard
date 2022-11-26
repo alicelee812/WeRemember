@@ -129,6 +129,13 @@
                         <view key="tableHeaderView" contentMode="scaleToFill" id="cbn-df-qsP">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="332"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4sa-sd-Muz">
+                                    <rect key="frame" x="14" y="14" width="363" height="305"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                            </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <prototypes>
@@ -168,7 +175,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="7Xd-ac-0KT"/>
                     <connections>
-                        <outlet property="pieChartView" destination="cbn-df-qsP" id="xkL-sg-jLr"/>
+                        <outlet property="pieChartView" destination="4sa-sd-Muz" id="QzA-qf-ZDk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="juM-Ca-wWp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -472,7 +479,7 @@
                                         <fragment content="登入">
                                             <attributes>
                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="18" name=".PingFangTC-Medium"/>
+                                                <font key="NSFont" metaFont="system" size="18"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>

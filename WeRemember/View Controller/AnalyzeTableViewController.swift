@@ -21,42 +21,34 @@ class AnalyzeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(show_donutChart())
+    
     }
     
-    //生成項目數據 DataEntry
-    //以支出類別為Entry
-    func setChartView() {
-        //生成項目數據 DataEntry
-        let pieChartDataEntries = Spend.expenseCategories.map({(category)->PieChartDataEntry in
-            return PieChartDataEntry(value: Double(calculateSum(category: category)), label: category.rawValue)
-        })
-        
-        
-        //設定項目 DataSet
-        let dataSet = PieChartDataSet(entries: pieChartDataEntries, label: "")
-        
-        //設定項目顏色
-        dataSet.colors = Spend.expenseCategories.map({ (category)->UIColor in
-            return UIColor(named: "\(category)") ?? UIColor.white
-        })
-       
-        //點選後突出距離
-        dataSet.selectionShift = 10
-        
-        //圓餅分隔間距
-        dataSet.sliceSpace = 5
-        
-        //設定資料 Data
-        let data = PieChartData(dataSet: dataSet)
-        data.setValueFormatter(DigitValueFormatter())
-        pieChartView.data = data
-        
-        //動畫
-        pieChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
+    func show_donutChart() -> UIView{
+        let percentages:[CGFloat] = [20, 50, 30]
+        var start:CGFloat = 270
+        let view = UIView()
+        for percentage in percentages{
+            //比例圓環
+            let end = start + percentage
+            let percentageCircularPath = UIBezierPath(arcCenter: CGPoint(x:200, y: 150), radius: 100, startAngle: CGFloat.pi/180*start/100*360, endAngle: CGFloat.pi/180*end/100*360, clockwise: true)
+            let percentageCircularLayer = CAShapeLayer()
+            percentageCircularLayer.path = percentageCircularPath.cgPath
+            percentageCircularLayer.strokeColor = UIColor(red: CGFloat.random(in: 0...1), green: CGFloat.random(in: 0...1), blue: CGFloat.random(in: 0...1), alpha: 1).cgColor
+            percentageCircularLayer.fillColor = UIColor.clear.cgColor
+            percentageCircularLayer.lineWidth = 50
+
+            //將圓環疊加成為UIView
+            view.layer.addSublayer(percentageCircularLayer)
+            //將percentage startAngle起始點更新
+            start = end
+        }
+        return view
     }
-            
-        
-        
+    
+    
+   
         
         
         
@@ -108,44 +100,6 @@ class AnalyzeTableViewController: UITableViewController {
             formatter.groupingSize = 3
             return formatter.string(from: NSNumber(value:amount))!
         }
-    
-    
-         
-        
-        /*
-         // Override to support conditional editing of the table view.
-         override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-         // Return false if you do not want the specified item to be editable.
-         return true
-         }
-         */
-        
-        /*
-         // Override to support editing the table view.
-         override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-         if editingStyle == .delete {
-         // Delete the row from the data source
-         tableView.deleteRows(at: [indexPath], with: .fade)
-         } else if editingStyle == .insert {
-         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-         }
-         }
-         */
-        
-        /*
-         // Override to support rearranging the table view.
-         override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-         
-         }
-         */
-        
-        /*
-         // Override to support conditional rearranging of the table view.
-         override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-         // Return false if you do not want the item to be re-orderable.
-         return true
-         }
-         */
         
         /*
          // MARK: - Navigation
